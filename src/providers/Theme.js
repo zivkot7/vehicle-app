@@ -2,19 +2,19 @@ import { createTheme } from '@mantine/core';
 
 export const theme = createTheme({
   primaryColor: 'primary',
-  primaryShade: 6,
+  primaryShade: 3,
   colors: {
     primary: [
-      '#1C2C3E',
-      '#19283A',
-      '#162436',
-      '#132032',
-      '#111B2D',
-      '#0F172A',
-      '#0D1526',
-      '#0B1323',
-      '#070F20',
-      '#040A16',
+      '#8B0000', 
+      '#800000', 
+      '#750000', 
+      '#6B0000', 
+      '#610000', 
+      '#570000', 
+      '#4D0000', 
+      '#430000', 
+      '#370000', 
+      '#2D0000', 
     ],
   },
   defaultRadius: 'md',
@@ -23,8 +23,8 @@ export const theme = createTheme({
       defaultProps: {
         centered: true,
         overlayProps: {
-          backgroundOpacity: 0.55,
-          blur: 3,
+          backgroundOpacity: 0.70,
+          blur: 4,
         },
       },
     },
