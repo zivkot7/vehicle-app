@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import { SearchInput } from "../../components/SearchInput";
 
 export const VehicleModels = () => {
   return (
-    <div>VehicleModels</div>
-  )
-}
+    <>
+      <div>VehicleModels</div>
+      <SearchInput />
+    </>
+  );
+};

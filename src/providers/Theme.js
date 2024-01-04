@@ -1,29 +1,33 @@
-import { createTheme } from '@mantine/core';
+import { createTheme } from "@mantine/core";
 
 export const theme = createTheme({
-  primaryColor: 'primary',
+  fontFamily: {
+    default: "'Open Sans', sans-serif",
+    heading: "'Montserrat', sans-serif",
+  },
+  primaryColor: "primary",
   primaryShade: 3,
   colors: {
     primary: [
-      '#8B0000', 
-      '#800000', 
-      '#750000', 
-      '#6B0000', 
-      '#610000', 
-      '#570000', 
-      '#4D0000', 
-      '#430000', 
-      '#370000', 
-      '#2D0000', 
+      "#FFA500", // Orange
+      "#FF8C00", // Dark Orange
+      "#FF7F50", // Coral
+      "#FF6347", // Tomato
+      "#FF4500", // Orange Red
+      "#FFD700", // Gold
+      "#FFA07A", // Light Salmon
+      "#FF8F00", // Dark Orange
+      "#FF7256", // Salmon
+      "#FF6347", // Tomato
     ],
   },
-  defaultRadius: 'md',
+  defaultRadius: "md",
   components: {
     Modal: {
       defaultProps: {
         centered: true,
         overlayProps: {
-          backgroundOpacity: 0.70,
+          backgroundOpacity: 0.7,
           blur: 4,
         },
       },

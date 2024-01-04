@@ -23,21 +23,20 @@ export const Layout = () => {
     <AppShell
       header={{ height: 60 }}
       navbar={{
-        width: 300,
         breakpoint: "sm",
         collapsed: { mobile: !opened },
       }}
       padding="md"
     >
       <AppShell.Header>
-        <Group p={5}>
-          <Image src={carLogo} w={50} />
-          <Title styles={layoutStyle.title}>Vehicle app</Title>
+        <Group p={5} justify="space-evenly" style={{ flex: 1 }}>
+          <Group>
+            <Image src={carLogo} w={50} />
+            <Title styles={layoutStyle.title}>Vehicle app</Title>
+          </Group>
           <TabPanels />
         </Group>
       </AppShell.Header>
-
-      <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
 
       <AppShell.Main>
         <Outlet />
