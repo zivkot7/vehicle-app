@@ -17,7 +17,6 @@ import FileDropZone from "../../components/FileDropZone";
 
 export const Create = observer(({ form }) => {
   const [file, setFile] = useState(null);
-  console.log(file);
 
   const handlePreview = (e) => {
     if (!e.target.files) {

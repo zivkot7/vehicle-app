@@ -1,7 +1,7 @@
 import MobxReactForm from "mobx-react-form";
 import dvr from "mobx-react-form/lib/validators/DVR";
 import validatorjs from "validatorjs";
-import { VehicleMake } from "../../services/Vehicles/Make";
+import { Vehicles } from "../../services/Vehicles/Make";
 
 class CreateForm extends MobxReactForm {
   plugins() {
@@ -29,8 +29,8 @@ class CreateForm extends MobxReactForm {
         },
         {
           name: "image",
-          label: "Add Brand Image",
-          placeholder: "Add abbreviation for vehicle brand",
+          label: "Add Brand logo",
+          placeholder: "Add brand logo",
           rules: "required",
           value: "",
         },
@@ -42,7 +42,7 @@ class CreateForm extends MobxReactForm {
     return {
       onSuccess: async (form) => {
         const { name, image, manufacturer } = form.values();
-        const url = await VehicleMake.VehicleMake.uploadFile({
+        const url = await Vehicles.Make.uploadFile({
           file: image,
           storageName: `uploads/${name}`,
         });
@@ -53,7 +53,7 @@ class CreateForm extends MobxReactForm {
           image: url,
         };
 
-        await VehicleMake.VehicleMake.create(data);
+        await Vehicles.Make.create(data);
 
         form.clear();
       },

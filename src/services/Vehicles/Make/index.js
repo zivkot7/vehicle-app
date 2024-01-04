@@ -2,7 +2,7 @@ import { supabase } from "./../../Supabase";
 
 const PAGE_SIZE = 8;
 
-export class VehicleMake {
+export class Make {
   static makeEndpoint = "vehicle_make";
 
   static get = async ({ pageIndex, searchQuery, sort }) => {
@@ -15,8 +15,8 @@ export class VehicleMake {
     const sortActions = {
       "NameA ": () => query.order("name", { ascending: true }),
       "NameD ": () => query.order("name", { ascending: false }),
-      "CountryA ": () => query.order("country", { ascending: true }),
-      "CountryD ": () => query.order("country", { ascending: false }),
+      "ManufacturerA ": () => query.order("manufacturer", { ascending: true }),
+      "ManufacturerD ": () => query.order("manufacturer", { ascending: false }),
     };
 
     if (sort && sortActions.hasOwnProperty(sort)) {
@@ -25,7 +25,7 @@ export class VehicleMake {
 
     if (searchQuery) {
       query = query.or(
-        `name.ilike.%${searchQuery}%,abrv.ilike.%${searchQuery}%,country.ilike.%${searchQuery}%`
+        `name.ilike.%${searchQuery}%,abrv.ilike.%${searchQuery}%,manufacturer.ilike.%${searchQuery}%`
       );
     }
 
@@ -112,3 +112,7 @@ export class VehicleMake {
     return this.getFileURL(filePathWithoutSpaces, storageName);
   };
 }
+
+export const Vehicles = {
+  Make,
+};
