@@ -5,7 +5,7 @@ import {
   reaction,
   action,
 } from "mobx";
-import { Vehicles } from "./../services/Vehicles";
+import { Vehicles } from "../services/Vehicles";
 
 export class VehicleMakeStore {
   make = [];

@@ -112,7 +112,3 @@ export class Make {
     return this.getFileURL(filePathWithoutSpaces, storageName);
   };
 }
-
-export const Vehicles = {
-  Make,
-};

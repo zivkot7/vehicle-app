@@ -1,7 +1,7 @@
 import MobxReactForm from "mobx-react-form";
 import dvr from "mobx-react-form/lib/validators/DVR";
 import validatorjs from "validatorjs";
-import { Vehicles } from "../../services/Vehicles/Make";
+import { Vehicles } from "../../services/Vehicles";
 
 class CreateForm extends MobxReactForm {
   plugins() {

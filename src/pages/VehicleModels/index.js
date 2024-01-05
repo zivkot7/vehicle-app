@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchInput } from "../../components/SearchInput";
+import SearchInput from "../../components/SearchInput";
 
 export const VehicleModels = () => {
   return (
