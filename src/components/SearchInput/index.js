@@ -1,23 +1,36 @@
 import { CloseButton, Input } from "@mantine/core";
+import { useDebouncedValue } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const SearchInput = ({ value, setValue }) => {
+const SearchInput = ({ onChange, initialValue = "" }) => {
+  const [inputValue, setInputValue] = useState(initialValue);
+  const [debounced] = useDebouncedValue(inputValue, 500);
+
+  useEffect(() => {
+    onChange(debounced);
+  }, [debounced, onChange]);
+
   return (
     <Input
-      placeholder="Input placeholder"
+      placeholder="Search..."
       styles={{ wrapper: { width: 300 } }}
-      value={value}
+      value={inputValue}
       rightSectionPointerEvents="all"
-      onChange={(event) => setValue(event.currentTarget.value)}
+      onChange={(e) => {
+        setInputValue(e.target.value);
+      }}
+      onBlur={() => onChange(inputValue)}
       leftSection={<IconSearch size={16} />}
       rightSection={
         <CloseButton
           aria-label="Search"
-          onClick={() => setValue("")}
-          style={{ display: value ? undefined : "none" }}
+          onClick={() => setInputValue("")}
+          style={{ display: inputValue ? undefined : "none" }}
         />
       }
     />
   );
 };
+
+export default SearchInput;
