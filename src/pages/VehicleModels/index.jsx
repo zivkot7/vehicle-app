@@ -91,7 +91,7 @@ const VehicleModels = observer(() => {
         modelStore.getColors(id);
       }
     }
-  }, []);
+  }, [id]);
 
   return (
     <>

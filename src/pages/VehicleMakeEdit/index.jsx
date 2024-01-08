@@ -43,21 +43,21 @@ const EditBrand = observer(({ form }) => {
     navigate(-1);
   };
 
-  const handleState = () => {
-    if (id) {
-      makeStore.getSingleMake(id);
-    }
-
-    if (makeStore.singleMake) {
-      form.$("name").set(`${makeStore.singleMake.name}`);
-      form.$("manufacturer").set(`${makeStore.singleMake.manufacturer}`);
-      form.$("image").set(`${makeStore.singleMake.image}`);
-    }
-  };
-
   useEffect(() => {
+    const handleState = () => {
+      if (id) {
+        makeStore.getSingleMake(id);
+      }
+
+      if (makeStore.singleMake) {
+        form.$("name").set(`${makeStore.singleMake.name}`);
+        form.$("manufacturer").set(`${makeStore.singleMake.manufacturer}`);
+        form.$("image").set(`${makeStore.singleMake.image}`);
+      }
+    };
+
     handleState();
-  }, [makeStore.singleMakeId]);
+  }, [id, form]);
 
   return (
     <>

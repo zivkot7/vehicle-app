@@ -43,7 +43,7 @@ const EditModel = observer(({ form }) => {
     navigate(-1);
   };
 
-  const handleState = () => {
+  useEffect(() => {
     if (id) {
       modelStore.getSingleModel(id);
       if (modelStore.singleModel) {
@@ -56,11 +56,7 @@ const EditModel = observer(({ form }) => {
         form.$("image").set(`${modelStore.singleModel.image}`);
       }
     }
-  };
-
-  useEffect(() => {
-    handleState();
-  }, [modelStore.singleModel?.id]);
+  }, [id, form]);
 
   return (
     <>

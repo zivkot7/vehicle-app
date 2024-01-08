@@ -1,6 +1,6 @@
 import { AppShell, Group, Image, Title } from "@mantine/core";
 
-import React, { useState } from "react";
+import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import carLogo from "../../assets/blue-car-logo-png.png";
 import { layoutStyle } from "../../styles/Layout/styles";
