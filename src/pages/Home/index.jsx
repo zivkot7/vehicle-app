@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import SearchInput from "../../components/SearchInput";
 import {
-  ActionIcon,
   Button,
   Container,
   Grid,
