@@ -18,6 +18,8 @@ export class VehicleModelStore {
   searchQuery = "";
   sort = "";
   cache = new Map();
+  colors = [];
+  colorSort = "";
 
   constructor() {
     makeObservable(this, {
@@ -29,7 +31,9 @@ export class VehicleModelStore {
       pageCount: observable,
       searchQuery: observable,
       isLoading: observable,
+      colors: observable,
       sort: observable,
+      colorSort: observable,
       setModels: action,
       setLoading: action,
       setSingleModel: action,
@@ -38,6 +42,8 @@ export class VehicleModelStore {
       setPageCount: action,
       setSearchQuery: action,
       setSort: action,
+      setColors: action,
+      setColorSort: action,
     });
 
     reaction(
@@ -50,6 +56,15 @@ export class VehicleModelStore {
         this.getModels(this.make_id);
       }
     );
+  }
+
+  setColorSort(colorSort) {
+    this.colorSort = colorSort;
+  }
+
+  setColors(apiData, id) {
+    this.colors = apiData;
+    this.make_id = id;
   }
 
   setModels(apiData, id) {
@@ -82,6 +97,13 @@ export class VehicleModelStore {
     this.sort = sort;
   }
 
+  async getColors(id) {
+    const apiData = await Vehicles.Model.getColors(id);
+    runInAction(() => {
+      this.setColors(apiData, id);
+    });
+  }
+
   async getModels(id) {
     this.setLoading(true);
     const cacheKey = `Model_${this.pageIndex}_${this.searchQuery}_${id}_${this.sort}`;
@@ -100,6 +122,7 @@ export class VehicleModelStore {
         searchQuery: this.searchQuery,
         id,
         sort: this.sort,
+        colorSort: this.colorSort,
       });
       runInAction(() => {
         this.setModels(apiData.data, id);

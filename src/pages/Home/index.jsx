@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SearchInput from "../../components/SearchInput";
 import {
   ActionIcon,
+  Button,
   Container,
   Grid,
   Group,
@@ -20,6 +21,7 @@ import { makeStore } from "../../stores/VehicleMakeStore";
 import { cardSpanCalculator } from "../../utils/cardSpanCalculator";
 import { handleSearch, handleSort } from "../../utils/filterHandlers";
 import { SELECT_BRAND_DATA } from "../../utils/Constants";
+import { theme } from "../../providers/Theme";
 
 const Home = observer(() => {
   const navigate = useNavigate();
@@ -36,21 +38,16 @@ const Home = observer(() => {
     return (
       <Group justify="space-between">
         <Tooltip label="Edit Brand" withArrow arrowSize={10}>
-          <ActionIcon
-            variant="transparent"
-            onClick={() => handleNavigateEdit({ ...item })}
-          >
-            Edit
-          </ActionIcon>
+          <Button onClick={() => handleNavigateEdit({ ...item })}>Edit</Button>
         </Tooltip>
         <Tooltip label="Delete Brand " withArrow arrowSize={10} color="red.8">
-          <ActionIcon
-            variant="transparent"
-            c="red.8"
+          <Button
+            variant="outline"
+            c={theme.colors.primary[4]}
             onClick={() => handleDelete(item.id)}
           >
             Delete
-          </ActionIcon>
+          </Button>
         </Tooltip>
       </Group>
     );

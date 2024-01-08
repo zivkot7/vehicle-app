@@ -78,6 +78,23 @@ export class VehicleMakeStore {
     this.sort = sort;
   }
 
+  async getAllMakeData() {
+    this.setLoading(true);
+
+    try {
+      const apiData = await Vehicles.Make.getAll();
+      runInAction(() => {
+        this.setMake(apiData.data);
+        this.setLoading(false);
+      });
+    } catch (error) {
+      console.error("Error fetching all data:", error);
+      runInAction(() => {
+        this.setLoading(false);
+      });
+    }
+  }
+
   async getMake() {
     this.setLoading(true);
     const cacheKey = `Make_${this.pageIndex}_${this.searchQuery}_${this.sort}`;

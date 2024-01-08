@@ -54,10 +54,8 @@ class CreateForm extends MobxReactForm {
         };
 
         await Vehicles.Make.create(data);
-
         form.clear();
       },
-      onError() {},
     };
   }
 }

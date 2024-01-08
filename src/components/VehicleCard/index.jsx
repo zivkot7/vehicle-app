@@ -1,4 +1,4 @@
-import { Card, Text, Image, Badge, Group } from "@mantine/core";
+import { Card, Text, Image, Badge, Group, Paper } from "@mantine/core";
 import React from "react";
 import { vehicleCardStyle } from "../../styles/VehicleCard/styles";
 import { useHover } from "@mantine/hooks";
@@ -12,11 +12,10 @@ export const VehicleCard = ({
   const { hovered, ref } = useHover();
 
   return (
-    <div ref={ref}>
+    <Paper ref={ref}>
       <Card
         mt={20}
         shadow="lg"
-        padding="lg"
         radius="md"
         withBorder
         styles={hovered ? vehicleCardStyle.hovered : vehicleCardStyle}
@@ -30,26 +29,21 @@ export const VehicleCard = ({
             {data.name}
           </Text>
 
-          <Image
-            p={5}
-            src={data.image}
-            height={160}
-            w="100%"
-            alt="Norway"
-            onClick={onClick}
-          />
+          <Image p={5} src={data.image} h={160} w={276} alt="image" />
           <Text fw={400} mt={5} align="start">
             {data.abrv}
           </Text>
-          <Text fw={400} mt={5} align="start">
-            Manufacturer:{" "}
-            <Badge bg="black" c="white">
-              {data.manufacturer}
-            </Badge>
-          </Text>
+          {!modelDescription && (
+            <Text fw={400} mt={5} align="start">
+              Manufacturer:{" "}
+              <Badge bg="black" c="white">
+                {data.manufacturer}
+              </Badge>
+            </Text>
+          )}
         </Card.Section>
         {modelDescription && (
-          <Card.Section mt="xs" p="md">
+          <Card.Section p="md">
             <Text
               fz="sm"
               fw={500}
@@ -67,6 +61,6 @@ export const VehicleCard = ({
 
         <Card.Section p="md">{renderButtons}</Card.Section>
       </Card>
-    </div>
+    </Paper>
   );
 };

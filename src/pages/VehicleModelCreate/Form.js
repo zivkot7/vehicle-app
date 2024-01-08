@@ -92,7 +92,7 @@ class CreateForm extends MobxReactForm {
         const data = {
           name: name,
           abrv: name.substring(0, 3),
-          color: color,
+          color: color.toLowerCase(),
           horse_power: horse_power,
           transmission: transmission,
           year: year,

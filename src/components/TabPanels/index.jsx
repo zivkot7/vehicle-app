@@ -1,10 +1,18 @@
 import { Tabs } from "@mantine/core";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes";
 
 export const TabPanels = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const activeTab = (() => {
+    if (location.pathname === ROUTES.HOME) return "home";
+    if (location.pathname === ROUTES.VEHICLE_CREATE) return "brand";
+    if (location.pathname === ROUTES.VEHICLE_CREATE_MODEL) return "model";
+    return "home";
+  })();
 
   const handleTabClick = (value) => {
     switch (value) {
@@ -23,7 +31,7 @@ export const TabPanels = () => {
   };
 
   return (
-    <Tabs defaultValue="home" ml={100} styles={{ tab: { fontSize: 18 } }}>
+    <Tabs defaultValue={activeTab} ml={100} styles={{ tab: { fontSize: 18 } }}>
       <Tabs.List>
         <Tabs.Tab value="home" onClick={() => handleTabClick("home")}>
           Home

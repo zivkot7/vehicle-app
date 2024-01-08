@@ -14,9 +14,11 @@ import {
 } from "@mantine/core";
 import { CustomInput } from "../../components/CustomInput";
 import FileDropZone from "../../components/FileDropZone";
+import { useNavigate } from "react-router-dom";
 
 export const Create = observer(({ form }) => {
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
 
   const handlePreview = (e) => {
     if (!e.target.files) {
@@ -38,6 +40,7 @@ export const Create = observer(({ form }) => {
     if (!form.hasError) {
       setFile(null);
     }
+    navigate("/");
   };
 
   return (

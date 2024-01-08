@@ -5,6 +5,18 @@ const PAGE_SIZE = 8;
 export class Make {
   static makeEndpoint = "vehicle_make";
 
+  static getAll = async () => {
+    const { data, error } = await supabase.from(this.makeEndpoint).select("*");
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return {
+      data: data ?? [],
+    };
+  };
+
   static get = async ({ pageIndex, searchQuery, sort }) => {
     const range = pageIndex ? pageIndex - 1 : 0;
     const offset = range * PAGE_SIZE;

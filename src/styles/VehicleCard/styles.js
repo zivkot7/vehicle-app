@@ -12,5 +12,6 @@ export const vehicleCardStyle = {
   root: {
     fontFamily: theme.fontFamily.heading,
     color: theme.colors.primary[4],
+    background: "linear-gradient(to right, #ffffff, #ADD8E6, #ffffff)",
   },
 };

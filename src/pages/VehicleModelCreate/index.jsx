@@ -16,10 +16,12 @@ import { createForm } from "./Form";
 import FileDropZone from "../../components/FileDropZone";
 import { makeStore } from "../../stores/VehicleMakeStore";
 import { CustomInput } from "../../components/CustomInput";
+import { useNavigate } from "react-router-dom";
 
 export const Create = observer(({ form }) => {
   const [file, setFile] = useState(null);
   const [mappedMakeData, setMappedMakeData] = useState([]);
+  const navigate = useNavigate();
 
   const handlePreview = (e) => {
     if (!e.target.files) {
@@ -36,18 +38,18 @@ export const Create = observer(({ form }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(form);
     e.preventDefault();
     form.submit();
 
     if (!form.hasError) {
       setFile(null);
     }
+    navigate(-1);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      await makeStore.getMake();
+      await makeStore.getAllMakeData();
       const mappedData = makeStore.make.map((data) => ({
         value: data.id,
         label: data.name,
@@ -62,7 +64,7 @@ export const Create = observer(({ form }) => {
     <>
       <Container size="xs" my={20}>
         <Title ta="center" c="primary" order={2}>
-          Add New {makeStore.singleMake?.name} Model
+          Add New Model
         </Title>
 
         <Paper withBorder shadow="md" p="lg" mt={30} radius="md">

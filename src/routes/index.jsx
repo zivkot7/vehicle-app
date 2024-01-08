@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Layout } from "../components/Layout";
-import { VehicleModels } from "../pages/VehicleModels";
+import VehicleModels from "../pages/VehicleModels";
 import { VehicleModelCreate } from "../pages/VehicleModelCreate";
 import { VehicleModelEdit } from "../pages/VehicleModelEdit";
 import { VehicleMakeCreate } from "../pages/VehicleMakeCreate";
@@ -12,8 +12,8 @@ export const ROUTES = {
   VEHICLE_MODEL: "/models/:id",
   VEHICLE_EDIT_BRAND: "/brand/:id",
   VEHICLE_EDIT_MODEL: "/model/:id",
-  VEHICLE_CREATE: "/create",
-  VEHICLE_CREATE_MODEL: "/create/:id",
+  VEHICLE_CREATE: "/create-brand",
+  VEHICLE_CREATE_MODEL: "/create-model",
   NOT_FOUND: "*",
 };
 
