@@ -34,12 +34,14 @@ export const VehicleCard = ({
             {data.abrv}
           </Text>
           {!modelDescription && (
-            <Text fw={400} mt={5} align="start">
-              Manufacturer:{" "}
+            <Group>
+              <Text fw={400} mt={5} align="start">
+                Manufacturer:{" "}
+              </Text>
               <Badge bg="black" c="white">
                 {data.manufacturer}
               </Badge>
-            </Text>
+            </Group>
           )}
         </Card.Section>
         {modelDescription && (
